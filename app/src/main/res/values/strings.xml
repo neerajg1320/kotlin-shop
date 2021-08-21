@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ImageAssetDemo</string>
+    <string name="hello_again">Hello Again</string>
 </resources>
