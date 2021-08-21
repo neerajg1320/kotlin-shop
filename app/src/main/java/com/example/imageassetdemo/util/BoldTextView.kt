@@ -1,4 +1,4 @@
-package com.example.imageassetdemo
+package com.example.imageassetdemo.util
 
 import android.content.Context
 import android.graphics.Typeface
