@@ -32,17 +32,6 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
-    private fun setupActionBar(toolbar_register_activity: Toolbar) {
-        setSupportActionBar(toolbar_register_activity)
-
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
-        }
-
-        toolbar_register_activity.setNavigationOnClickListener { onBackPressed() }
-    }
 
     /**
      * A function to validate the entries of a new user.

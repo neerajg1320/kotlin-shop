@@ -2,6 +2,7 @@ package com.example.imageassetdemo.activities
 
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.util.BoldTextView
@@ -55,4 +56,17 @@ open class BaseActivity : AppCompatActivity() {
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
     }
+
+    fun setupActionBar(toolbar: Toolbar) {
+        setSupportActionBar(toolbar)
+
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
+        }
+
+        toolbar.setNavigationOnClickListener { onBackPressed() }
+    }
+
 }

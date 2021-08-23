@@ -15,7 +15,8 @@ class ForgotPasswordActivity : BaseActivity() {
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // START
+        setupActionBar(binding.toolbarForgotPasswordActivity)
+
         binding.btnSubmit.setOnClickListener {
 
             // Get the email id from the input field.
@@ -51,6 +52,5 @@ class ForgotPasswordActivity : BaseActivity() {
                     }
             }
         }
-        // END
     }
 }
