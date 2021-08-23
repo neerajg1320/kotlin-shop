@@ -9,6 +9,7 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityLoginBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.User
+import com.example.imageassetdemo.util.Constants
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -140,6 +141,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         if (user.profileCompleted == 0) {
             val intent = Intent(this, UserProfileActivity::class.java)
+            // Since the User is parcelable now
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
             startActivity(intent)
         } else {
             gotoMainActivity(user)
