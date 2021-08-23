@@ -3,9 +3,12 @@ package com.example.imageassetdemo.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityRegisterBinding
+import com.example.imageassetdemo.firestore.FirestoreClass
+import com.example.imageassetdemo.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -96,7 +99,8 @@ class RegisterActivity : BaseActivity() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                     OnCompleteListener<AuthResult> { task ->
-                        hideProgressDialog()
+
+
 
                         // If the registration is successfully done
                         if (task.isSuccessful) {
@@ -104,19 +108,36 @@ class RegisterActivity : BaseActivity() {
                             // Firebase registered user
                             val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                            showErrorSnackBar(
-                                "You are registered successfully. Your user id is ${firebaseUser.uid}",
-                                false
+                            val user = User(
+                                firebaseUser.uid,
+                                binding.etFirstName.text.toString().trim { it <= ' ' },
+                                binding.etLastName.text.toString().trim { it <= ' ' },
+                                binding.etEmail.text.toString().trim { it <= ' ' }
                             )
 
-                            // SignOut user and goto previous activity which is LoginActivity
-                            FirebaseAuth.getInstance().signOut()
-                            finish()
+                            // TODO: Neeraj: 2021-08-23 17:39: Change this to a singleton
+                            FirestoreClass().registerUser(this, user)
+
                         } else {
+                            hideProgressDialog()
                             // If the registering is not successful then show error message.
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     })
         }
+    }
+
+    fun userRegistrationSuccess() {
+        hideProgressDialog()
+
+        Toast.makeText(
+            this,
+            getString(R.string.register_success),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        // SignOut user and goto previous activity which is LoginActivity
+         FirebaseAuth.getInstance().signOut()
+         finish()
     }
 }
