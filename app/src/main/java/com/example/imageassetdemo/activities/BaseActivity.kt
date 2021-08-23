@@ -1,21 +1,22 @@
 package com.example.imageassetdemo.activities
 
+import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.imageassetdemo.R
+import com.example.imageassetdemo.util.BoldTextView
 import com.google.android.material.snackbar.Snackbar
 
 
-// TODO Step 3: Create an open class name as BaseActivity and inherits the AppCompatActivity class.
+
 /**
  * A base activity class is used to define the functions and members which we will use in all the activities.
  * It inherits the AppCompatActivity class so in other activity class we will replace the AppCompatActivity with BaseActivity.
  */
-// START
+
 open class BaseActivity : AppCompatActivity() {
 
-    // TODO Step 4: Create a function to show the success and error messages in snack bar component.
-    // START
+    private lateinit var mProgressDialog: ProgressDialog
     /**
      * A function to show the success and error messages in snack bar component.
      */
@@ -41,6 +42,17 @@ open class BaseActivity : AppCompatActivity() {
         }
         snackBar.show()
     }
-    // END
+
+    fun showProgressDialog(text: String) {
+        mProgressDialog = ProgressDialog(this)
+        mProgressDialog.setContentView(R.layout.dialog_progress)
+        mProgressDialog.findViewById<BoldTextView>(R.id.tv_progress_text).text = text
+        mProgressDialog.setCancelable(false)
+        mProgressDialog.setCanceledOnTouchOutside(false)
+        mProgressDialog.show()
+    }
+
+    fun hideProgressDialog() {
+        mProgressDialog.dismiss()
+    }
 }
-// END
