@@ -40,14 +40,17 @@
 
     <string name="register_success">You are registered successfully.</string>
 
-    <!--TODO Step 5: Add the string resources in the strings.xml file.-->
-    <!--START-->
     <string name="title_complete_profile">COMPLETE PROFILE</string>
     <string name="et_hint_mobile_number">Mobile Number</string>
+
     <string name="rb_lbl_male">MALE</string>
     <string name="rb_lbl_female">FEMALE</string>
     <string name="btn_lbl_save">Save</string>
 
-    <!--END-->
+    <string name="read_storage_permission_denied">Oops, you just denied the permission for storage. You can also allow it from settings.</string>
 
+    <!--TODO Step 6: Add the string resources in the strings.xml file.-->
+    <!--START-->
+    <string name="image_selection_failed">Image selection Failed!</string>
+    <!--END-->
 </resources>

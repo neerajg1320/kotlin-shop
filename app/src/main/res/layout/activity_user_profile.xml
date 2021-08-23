@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".activities.UserProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -53,6 +54,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/user_image_background" />
 
                 <ImageView
                     android:id="@+id/iv_user_photo"
@@ -64,10 +69,6 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_user_placeholder" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/user_image_background" />
             </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout
