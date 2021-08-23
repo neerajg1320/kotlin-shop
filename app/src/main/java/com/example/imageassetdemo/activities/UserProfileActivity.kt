@@ -16,6 +16,7 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityUserProfileBinding
 import com.example.imageassetdemo.models.User
 import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.util.GlideLoader
 import java.io.IOException
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
@@ -131,7 +132,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                         // The uri of selected image from phone storage.
                         val selectedImageFileUri = data.data!!
 
-                        binding.ivUserPhoto.setImageURI(Uri.parse(selectedImageFileUri.toString()))
+                        // binding.ivUserPhoto.setImageURI(Uri.parse(selectedImageFileUri.toString()))
+                        GlideLoader(this).loadUserPicture(selectedImageFileUri, binding.ivUserPhoto)
                     } catch (e: IOException) {
                         e.printStackTrace()
                         Toast.makeText(
