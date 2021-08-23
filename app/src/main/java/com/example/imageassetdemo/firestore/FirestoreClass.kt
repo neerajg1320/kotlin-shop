@@ -1,6 +1,8 @@
 package com.example.imageassetdemo.firestore
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import com.example.imageassetdemo.activities.LoginActivity
 import com.example.imageassetdemo.activities.RegisterActivity
@@ -77,21 +79,34 @@ class FirestoreClass {
             .get()
             .addOnSuccessListener { document ->
 
-                // TODO: Neeraj: 2021-08-23 18:37: Handle the case where document is null
-                Log.i(activity.javaClass.simpleName, "document: ${document.toString()}")
+                Log.i(activity.javaClass.simpleName, document.toString())
 
                 // Here we have received the document snapshot which is converted into the User Data model object.
                 val user = document.toObject(User::class.java)!!
 
-                // TODO Step 6: Pass the result to the Login Activity.
+                // TODO Step 2: Create an instance of the Android SharedPreferences.
                 // START
+                val sharedPreferences =
+                    activity.getSharedPreferences(
+                        Constants.APP_PREF,
+                        Context.MODE_PRIVATE
+                    )
+
+                // Create an instance of the editor which is help us to edit the SharedPreference.
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(
+                    Constants.LOGGED_IN_USERNAME,
+                    "${user.firstName} ${user.lastName}"
+                )
+                editor.apply()
+                // END
+
                 when (activity) {
                     is LoginActivity -> {
                         // Call a function of base activity for transferring the result to it.
                         activity.userLoggedInSuccess(user)
                     }
                 }
-                // END
             }
             .addOnFailureListener { e ->
                 // Hide the progress dialog if there is any error. And print the error in log.

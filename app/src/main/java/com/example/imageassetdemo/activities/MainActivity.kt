@@ -1,9 +1,11 @@
 package com.example.imageassetdemo.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.imageassetdemo.databinding.ActivityMainBinding
+import com.example.imageassetdemo.util.Constants
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvUserId.text = "User ID :: $userId"
         binding.tvEmailId.text = "Email ID :: $emailId"
+
+        val sharedPreferences = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
+        binding.tvUserId.text = "User Name :: $username"
 
         binding.btnLogout.setOnClickListener {
             // Logout from app.

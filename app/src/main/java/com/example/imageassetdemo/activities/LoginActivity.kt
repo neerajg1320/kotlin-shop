@@ -110,15 +110,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     /**
      * A function to notify user that logged in success and get the user details from the FireStore database after authentication.
      */
-    fun userLoggedInSuccess(user: User) {
-
-        // Hide the progress dialog.
-        hideProgressDialog()
-
-        // Print the user details in the log as of now.
-        Log.i("First Name: ", user.firstName)
-        Log.i("Last Name: ", user.lastName)
-        Log.i("Email: ", user.email)
+    fun gotoMainActivity(user: User) {
 
         // Redirect the user to Main Screen after log in.
         val intent = Intent(this@LoginActivity, MainActivity::class.java)
@@ -130,6 +122,29 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         intent.putExtra("email_id", user.email)
 
         startActivity(intent)
+    }
+
+    /**
+     * A function to notify user that logged in success and get the user details from the FireStore database after authentication.
+     */
+    fun userLoggedInSuccess(user: User) {
+
+        // Hide the progress dialog.
+        hideProgressDialog()
+
+        // Print the user details in the log as of now.
+        Log.i("First Name: ", user.firstName)
+        Log.i("Last Name: ", user.lastName)
+        Log.i("Email: ", user.email)
+
+
+        if (user.profileCompleted == 0) {
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+        } else {
+            gotoMainActivity(user)
+        }
+
         finish()
     }
 }
