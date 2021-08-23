@@ -97,6 +97,15 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     if (task.isSuccessful) {
 
                         showErrorSnackBar("You are logged in successfully.", false)
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        intent.putExtra(
+                            "user_id",
+                            FirebaseAuth.getInstance().currentUser!!.uid
+                        )
+                        intent.putExtra("email_id", email)
+                        startActivity(intent)
+                        finish()
                     } else {
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
