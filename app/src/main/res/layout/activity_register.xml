@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".activities.RegisterActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -42,7 +43,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_first_name"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/CustomTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -66,7 +67,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_last_name"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/CustomTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -90,7 +91,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/CustomTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -114,7 +115,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/CustomTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -138,7 +139,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_confirm_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/CustomTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
