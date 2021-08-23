@@ -3,9 +3,12 @@ package com.example.imageassetdemo.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityLoginBinding
+import com.example.imageassetdemo.firestore.FirestoreClass
+import com.example.imageassetdemo.models.User
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -92,24 +95,41 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 .addOnCompleteListener { task ->
 
                     // Hide the progress dialog
-                    hideProgressDialog()
+
 
                     if (task.isSuccessful) {
-
-                        showErrorSnackBar("You are logged in successfully.", false)
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        intent.putExtra(
-                            "user_id",
-                            FirebaseAuth.getInstance().currentUser!!.uid
-                        )
-                        intent.putExtra("email_id", email)
-                        startActivity(intent)
-                        finish()
+                        FirestoreClass().getUserDetails(this)
                     } else {
+                        hideProgressDialog()
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
                 }
         }
+    }
+
+    /**
+     * A function to notify user that logged in success and get the user details from the FireStore database after authentication.
+     */
+    fun userLoggedInSuccess(user: User) {
+
+        // Hide the progress dialog.
+        hideProgressDialog()
+
+        // Print the user details in the log as of now.
+        Log.i("First Name: ", user.firstName)
+        Log.i("Last Name: ", user.lastName)
+        Log.i("Email: ", user.email)
+
+        // Redirect the user to Main Screen after log in.
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra(
+            "user_id",
+            FirebaseAuth.getInstance().currentUser!!.uid
+        )
+        intent.putExtra("email_id", user.email)
+
+        startActivity(intent)
+        finish()
     }
 }

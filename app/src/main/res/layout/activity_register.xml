@@ -176,6 +176,7 @@
                     android:id="@+id/cb_terms_and_condition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorSecondaryText"
                     tools:checked="false" />
 
                 <com.example.imageassetdemo.util.BoldTextView
