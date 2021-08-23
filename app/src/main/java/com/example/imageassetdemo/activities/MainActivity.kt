@@ -16,15 +16,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userId = intent.getStringExtra("user_id")
-        val emailId = intent.getStringExtra("email_id")
-
-        binding.tvUserId.text = "User ID :: $userId"
-        binding.tvEmailId.text = "Email ID :: $emailId"
-
         val sharedPreferences = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE)
         val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
-        binding.tvUserId.text = "User Name :: $username"
+        binding.tvMain.text = "User Name :: $username"
 
         binding.btnLogout.setOnClickListener {
             // Logout from app.

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -14,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityUserProfileBinding
+import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.User
 import com.example.imageassetdemo.util.Constants
 import com.example.imageassetdemo.util.GlideLoader
@@ -21,25 +23,28 @@ import java.io.IOException
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
     lateinit var binding: ActivityUserProfileBinding
+    lateinit var mUserDetails: User
+    private var mSelectedImageFileUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var userDetails: User = User()
+
         if(intent.hasExtra(Constants.EXTRA_USER_DETAILS)) {
-            userDetails = intent.getParcelableExtra<User>(Constants.EXTRA_USER_DETAILS)!!
+            mUserDetails = intent.getParcelableExtra<User>(Constants.EXTRA_USER_DETAILS)!!
         }
 
         binding.etFirstName.isEnabled = false
-        binding.etFirstName.setText(userDetails.firstName)
+        binding.etFirstName.setText(mUserDetails.firstName)
         binding.etLastName.isEnabled = false
-        binding.etLastName.setText(userDetails.lastName)
+        binding.etLastName.setText(mUserDetails.lastName)
         binding.etEmail.isEnabled = false
-        binding.etEmail.setText(userDetails.email)
+        binding.etEmail.setText(mUserDetails.email)
 
         binding.ivUserPhoto.setOnClickListener(this@UserProfileActivity)
+        binding.btnSubmit.setOnClickListener(this@UserProfileActivity)
     }
 
     override fun onClick(v: View?) {
@@ -71,6 +76,48 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                             Constants.READ_STORAGE_PERMISSION_CODE
                         )
                     }
+                }
+
+                R.id.btn_submit ->{
+                    showProgressDialog(resources.getString(R.string.please_wait))
+
+                    FirestoreClass().uploadImageToCloudStorage(
+                        this@UserProfileActivity,
+                        mSelectedImageFileUri
+                    )
+
+                    /*
+                    if (validateUserProfileDetails()) {
+                        val userHashMap = HashMap<String, Any>()
+
+                        // Here the field which are not editable needs no update. So, we will update user Mobile Number and Gender for now.
+
+                        // Here we get the text from editText and trim the space
+                        val mobileNumber = binding.etMobileNumber.text.toString().trim { it <= ' ' }
+
+                        val gender = if (binding.rbMale.isChecked) {
+                            Constants.MALE
+                        } else {
+                            Constants.FEMALE
+                        }
+
+                        if (mobileNumber.isNotEmpty()) {
+                            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+                        }
+
+                        userHashMap[Constants.GENDER] = gender
+
+                        // Show the progress dialog.
+                        showProgressDialog(resources.getString(R.string.please_wait))
+
+                        // call the registerUser function of FireStore class to make an entry in the database.
+                        FirestoreClass().updateUserProfileData(
+                            this@UserProfileActivity,
+                            userHashMap
+                        )
+                    }
+
+                     */
                 }
             }
         }
@@ -130,10 +177,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 if (data != null) {
                     try {
                         // The uri of selected image from phone storage.
-                        val selectedImageFileUri = data.data!!
+                        mSelectedImageFileUri = data.data!!
 
                         // binding.ivUserPhoto.setImageURI(Uri.parse(selectedImageFileUri.toString()))
-                        GlideLoader(this).loadUserPicture(selectedImageFileUri, binding.ivUserPhoto)
+                        GlideLoader(this).loadUserPicture(mSelectedImageFileUri!!, binding.ivUserPhoto)
                     } catch (e: IOException) {
                         e.printStackTrace()
                         Toast.makeText(
@@ -148,5 +195,63 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             // A log is printed when user close or cancel the image selection.
             Log.e("Request Cancelled", "Image selection cancelled")
         }
+    }
+
+    /**
+     * A function to validate the input entries for profile details.
+     */
+    private fun validateUserProfileDetails(): Boolean {
+        return when {
+
+            // We have kept the user profile picture is optional.
+            // The FirstName, LastName, and Email Id are not editable when they come from the login screen.
+            // The Radio button for Gender always has the default selected value.
+
+            // Check if the mobile number is not empty as it is mandatory to enter.
+            TextUtils.isEmpty(binding.etMobileNumber.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(resources.getString(R.string.err_msg_enter_mobile_number), true)
+                false
+            }
+            else -> {
+                true
+            }
+        }
+    }
+
+    /**
+     * A function to notify the success result and proceed further accordingly after updating the user details.
+     */
+    fun userProfileUpdateSuccess() {
+
+        // Hide the progress dialog
+        hideProgressDialog()
+
+        Toast.makeText(
+            this@UserProfileActivity,
+            resources.getString(R.string.msg_profile_update_success),
+            Toast.LENGTH_SHORT
+        ).show()
+
+
+        // Redirect to the Main Screen after profile completion.
+        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
+        finish()
+    }
+
+    /**
+     * A function to notify the success result of image upload to the Cloud Storage.
+     *
+     * @param imageURL After successful upload the Firebase Cloud returns the URL.
+     */
+    fun imageUploadSuccess(imageURL: String) {
+
+        // Hide the progress dialog
+        hideProgressDialog()
+
+        Toast.makeText(
+            this@UserProfileActivity,
+            "Your image is uploaded successfully. Image URL is $imageURL",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
