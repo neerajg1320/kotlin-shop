@@ -7,21 +7,23 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Product
 import com.example.imageassetdemo.ui.activities.SettingsActivity
+import com.example.imageassetdemo.ui.adapters.DashboardItemsListAdapter
 import com.example.imageassetdemo.viewmodels.DashboardViewModel
 
 
 class DashboardFragment : BaseFragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var mRootView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Top options menu
+        // If we want to use the option menu in fragment we need to add it.
         setHasOptionsMenu(true)
     }
 
@@ -30,14 +32,10 @@ class DashboardFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+
+        mRootView = inflater.inflate(R.layout.fragment_dashboard, container, false)
+
+        return mRootView
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -52,10 +50,7 @@ class DashboardFragment : BaseFragment() {
 
             R.id.action_settings -> {
 
-                // TODO Step 9: Launch the SettingActivity on click of action item.
-                // START
                 startActivity(Intent(activity, SettingsActivity::class.java))
-                // END
                 return true
             }
         }
@@ -88,19 +83,21 @@ class DashboardFragment : BaseFragment() {
         // Hide the progress dialog.
         hideProgressDialog()
 
-//        if (dashboardItemsList.size > 0) {
-//
-//            rv_dashboard_items.visibility = View.VISIBLE
-//            tv_no_dashboard_items_found.visibility = View.GONE
-//
-//            rv_dashboard_items.layoutManager = GridLayoutManager(activity, 2)
-//            rv_dashboard_items.setHasFixedSize(true)
-//
-//            val adapter = DashboardItemsListAdapter(requireActivity(), dashboardItemsList)
-//            rv_dashboard_items.adapter = adapter
-//        } else {
-//            rv_dashboard_items.visibility = View.GONE
-//            tv_no_dashboard_items_found.visibility = View.VISIBLE
-//        }
+        val rvDashboard: RecyclerView = mRootView.findViewById(R.id.rv_dashboard_items)
+        val tvNoDashboardItems: TextView = mRootView.findViewById(R.id.tv_no_dashboard_items_found)
+        if (dashboardItemsList.size > 0) {
+
+            rvDashboard.visibility = View.VISIBLE
+            tvNoDashboardItems.visibility = View.GONE
+
+            rvDashboard.layoutManager = GridLayoutManager(activity, 2)
+            rvDashboard.setHasFixedSize(true)
+
+            val adapter = DashboardItemsListAdapter(requireActivity(), dashboardItemsList)
+            rvDashboard.adapter = adapter
+        } else {
+            rvDashboard.visibility = View.GONE
+            tvNoDashboardItems.visibility = View.VISIBLE
+        }
     }
 }
