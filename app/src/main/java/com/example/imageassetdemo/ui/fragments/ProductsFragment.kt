@@ -9,22 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.imageassetdemo.R
-import com.example.imageassetdemo.viewmodels.HomeViewModel
+import com.example.imageassetdemo.viewmodels.ProductsViewModel
 
-class HomeFragment : Fragment() {
+class ProductsFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var productsViewModel: ProductsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        productsViewModel =
+            ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_products, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        productsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

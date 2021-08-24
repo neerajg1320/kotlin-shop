@@ -32,16 +32,38 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         setContentView(binding.root)
 
 
+
         if(intent.hasExtra(Constants.EXTRA_USER_DETAILS)) {
             mUserDetails = intent.getParcelableExtra<User>(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        binding.etFirstName.isEnabled = false
+        binding.tvTitle.text = resources.getString(R.string.title_complete_profile)
+
+//        binding.etFirstName.isEnabled = false
         binding.etFirstName.setText(mUserDetails.firstName)
-        binding.etLastName.isEnabled = false
+//        binding.etLastName.isEnabled = false
         binding.etLastName.setText(mUserDetails.lastName)
         binding.etEmail.isEnabled = false
         binding.etEmail.setText(mUserDetails.email)
+
+        if (mUserDetails.profileCompleted != 0) {
+            setupActionBar(binding.toolbarUserProfileActivity)
+
+            binding.tvTitle.text = resources.getString(R.string.title_edit_profile)
+            GlideLoader(this).loadUserPicture(mUserDetails.image, binding.ivUserPhoto)
+            binding.etMobileNumber.setText(mUserDetails.mobile.toString())
+            if (mUserDetails.gender == Constants.MALE) {
+                binding.rbMale.isChecked = true
+            } else {
+                binding.rbFemale.isChecked = true
+            }
+
+        } else {
+            // Here user is coming from Login Screen probably
+            binding.tvTitle.text = resources.getString(R.string.title_complete_profile)
+        }
+
+
 
         binding.ivUserPhoto.setOnClickListener(this@UserProfileActivity)
         binding.btnSubmit.setOnClickListener(this@UserProfileActivity)
@@ -192,6 +214,61 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+
+
+    /**
+     * A function to notify the success result of image upload to the Cloud Storage.
+     *
+     * @param imageURL After successful upload the Firebase Cloud returns the URL.
+     */
+    fun imageUploadSuccess(imageURL: String) {
+        mUserProfileImageURL = imageURL
+        updateUserProfileDetails()
+    }
+
+    private fun updateUserProfileDetails() {
+
+        val userHashMap = HashMap<String, Any>()
+
+        val firstName = binding.etFirstName.text.toString().trim { it <= ' ' }
+        if (firstName != mUserDetails.firstName) {
+            userHashMap[Constants.FIRST_NAME] = firstName
+        }
+        val lastName = binding.etLastName.text.toString().trim { it <= ' ' }
+        if (lastName != mUserDetails.lastName) {
+            userHashMap[Constants.LAST_NAME] = lastName
+        }
+
+        // Here we get the text from editText and trim the space
+        val mobileNumber = binding.etMobileNumber.text.toString().trim { it <= ' ' }
+
+        val gender = if (binding.rbMale.isChecked) {
+            Constants.MALE
+        } else {
+            Constants.FEMALE
+        }
+
+        if (mUserProfileImageURL.isNotEmpty()) {
+            userHashMap[Constants.IMAGE] = mUserProfileImageURL
+        }
+
+        if (mobileNumber.isNotEmpty() && mobileNumber != mUserDetails.mobile.toString()) {
+            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+        }
+
+        if (gender != mUserDetails.gender) {
+            userHashMap[Constants.GENDER] = gender
+        }
+
+        userHashMap[Constants.COMPLETE_PROFILE] = 1
+
+        // call the registerUser function of FireStore class to make an entry in the database.
+        FirestoreClass().updateUserProfileData(
+            this@UserProfileActivity,
+            userHashMap
+        )
+    }
+
     /**
      * A function to notify the success result and proceed further accordingly after updating the user details.
      */
@@ -208,55 +285,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
 
         // Redirect to the Main Screen after profile completion.
-        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
+        startActivity(Intent(this@UserProfileActivity, DashboardActivity::class.java))
         finish()
-    }
-
-    /**
-     * A function to notify the success result of image upload to the Cloud Storage.
-     *
-     * @param imageURL After successful upload the Firebase Cloud returns the URL.
-     */
-    fun imageUploadSuccess(imageURL: String) {
-        mUserProfileImageURL = imageURL
-        updateUserProfileDetails()
-    }
-
-    private fun updateUserProfileDetails() {
-
-        val userHashMap = HashMap<String, Any>()
-
-        // Here the field which are not editable needs no update. So, we will update user Mobile Number and Gender for now.
-
-        // Here we get the text from editText and trim the space
-        val mobileNumber = binding.etMobileNumber.text.toString().trim { it <= ' ' }
-
-        val gender = if (binding.rbMale.isChecked) {
-            Constants.MALE
-        } else {
-            Constants.FEMALE
-        }
-
-        // TODO Step 7: Now update the profile image field if the image URL is not empty.
-        // START
-        if (mUserProfileImageURL.isNotEmpty()) {
-            userHashMap[Constants.IMAGE] = mUserProfileImageURL
-        }
-        // END
-
-        if (mobileNumber.isNotEmpty()) {
-            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
-        }
-
-        userHashMap[Constants.GENDER] = gender
-
-        userHashMap[Constants.COMPLETE_PROFILE] = 1
-
-        // call the registerUser function of FireStore class to make an entry in the database.
-        FirestoreClass().updateUserProfileData(
-            this@UserProfileActivity,
-            userHashMap
-        )
     }
 
 }
