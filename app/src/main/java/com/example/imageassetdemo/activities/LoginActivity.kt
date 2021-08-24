@@ -114,7 +114,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     fun gotoMainActivity(user: User) {
 
         // Redirect the user to Main Screen after log in.
-        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         intent.putExtra(
             "user_id",
