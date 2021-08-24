@@ -19,4 +19,8 @@
     <style name="CustomTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/colorSecondaryText</item>
     </style>
+
+    <style name="CustomDarkInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/colorPrimaryDark</item>
+    </style>
 </resources>

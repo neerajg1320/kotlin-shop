@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.imageassetdemo.R
+import com.example.imageassetdemo.firestore.FirestoreClass
+import com.example.imageassetdemo.models.Product
 import com.example.imageassetdemo.ui.activities.SettingsActivity
 import com.example.imageassetdemo.viewmodels.DashboardViewModel
 
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : BaseFragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
 
@@ -58,5 +60,47 @@ class DashboardFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getDashboardItemsList()
+    }
+
+    /**
+     * A function to get the dashboard items list from cloud firestore.
+     */
+    private fun getDashboardItemsList() {
+        // Show the progress dialog.
+        showProgressDialog(resources.getString(R.string.please_wait))
+
+        FirestoreClass().getDashboardItemsList(this@DashboardFragment)
+    }
+
+    /**
+     * A function to get the success result of the dashboard items from cloud firestore.
+     *
+     * @param dashboardItemsList
+     */
+    fun successDashboardItemsList(dashboardItemsList: ArrayList<Product>) {
+
+        // Hide the progress dialog.
+        hideProgressDialog()
+
+//        if (dashboardItemsList.size > 0) {
+//
+//            rv_dashboard_items.visibility = View.VISIBLE
+//            tv_no_dashboard_items_found.visibility = View.GONE
+//
+//            rv_dashboard_items.layoutManager = GridLayoutManager(activity, 2)
+//            rv_dashboard_items.setHasFixedSize(true)
+//
+//            val adapter = DashboardItemsListAdapter(requireActivity(), dashboardItemsList)
+//            rv_dashboard_items.adapter = adapter
+//        } else {
+//            rv_dashboard_items.visibility = View.GONE
+//            tv_no_dashboard_items_found.visibility = View.VISIBLE
+//        }
     }
 }

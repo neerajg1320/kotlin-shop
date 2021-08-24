@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.viewmodels.OrdersViewModel
 
-class OrdersFragment : Fragment() {
+class OrdersFragment : BaseFragment() {
 
     private lateinit var ordersViewModel: OrdersViewModel
 
