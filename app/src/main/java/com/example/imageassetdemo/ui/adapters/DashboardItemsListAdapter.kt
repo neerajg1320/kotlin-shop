@@ -21,6 +21,7 @@ open class DashboardItemsListAdapter(
     private var list: ArrayList<Product>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var onClickListener: OnClickListener? = null
     /**
      * Inflates the item views which is designed in xml layout file
      *
@@ -59,6 +60,12 @@ open class DashboardItemsListAdapter(
             )
             holder.itemView.findViewById<TextView>(R.id.tv_dashboard_item_title).text = model.title
             holder.itemView.findViewById<TextView>(R.id.tv_dashboard_item_price).text = "$${model.price}"
+
+            holder.itemView.setOnClickListener {
+                if (onClickListener != null) {
+                    onClickListener!!.onClick(position, model)
+                }
+            }
         }
     }
 
@@ -67,6 +74,18 @@ open class DashboardItemsListAdapter(
      */
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    fun setOnClickListener(onClickListener: OnClickListener) {
+        this.onClickListener = onClickListener
+    }
+
+    interface OnClickListener {
+
+        // TODO Step 4: Define a function to get the required params when user clicks on the item view in the interface.
+        // START
+        fun onClick(position: Int, product: Product)
+        // END
     }
 
     /**

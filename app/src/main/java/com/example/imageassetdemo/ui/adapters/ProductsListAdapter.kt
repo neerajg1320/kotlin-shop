@@ -1,6 +1,7 @@
 package com.example.imageassetdemo.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.models.Product
+import com.example.imageassetdemo.ui.activities.ProductDetailsActivity
 import com.example.imageassetdemo.ui.fragments.ProductsFragment
+import com.example.imageassetdemo.util.Constants
 import com.example.imageassetdemo.util.GlideLoader
 
 
@@ -63,8 +66,14 @@ open class ProductsListAdapter(
             holder.itemView.findViewById<TextView>(R.id.tv_item_price).text = "$${model.price}"
 
             holder.itemView.findViewById<ImageButton>(R.id.ib_delete_product).setOnClickListener {
-
                 fragment.deleteProduct(model.product_id)
+            }
+
+            holder.itemView.setOnClickListener {
+                // Launch Product details screen.
+                val intent = Intent(context, ProductDetailsActivity::class.java)
+                intent.putExtra(Constants.EXTRA_PRODUCT_ID, model.product_id)
+                context.startActivity(intent)
             }
         }
     }

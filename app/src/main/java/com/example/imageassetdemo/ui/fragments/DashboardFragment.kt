@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Product
+import com.example.imageassetdemo.ui.activities.ProductDetailsActivity
 import com.example.imageassetdemo.ui.activities.SettingsActivity
 import com.example.imageassetdemo.ui.adapters.DashboardItemsListAdapter
+import com.example.imageassetdemo.util.Constants
 import com.example.imageassetdemo.viewmodels.DashboardViewModel
 
 
@@ -95,6 +97,15 @@ class DashboardFragment : BaseFragment() {
 
             val adapter = DashboardItemsListAdapter(requireActivity(), dashboardItemsList)
             rvDashboard.adapter = adapter
+
+            adapter.setOnClickListener(object:DashboardItemsListAdapter.OnClickListener{
+                override fun onClick(position: Int, product: Product) {
+                    // Launch Product details screen.
+                    val intent = Intent(context, ProductDetailsActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_PRODUCT_ID, product.product_id)
+                    startActivity(intent)
+                }
+            })
         } else {
             rvDashboard.visibility = View.GONE
             tvNoDashboardItems.visibility = View.VISIBLE
