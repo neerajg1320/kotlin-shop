@@ -12,31 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageAssetDemo">
         <activity
-            android:name=".activities.DashboardActivity"
+            android:name="com.example.imageassetdemo.ui.activities.DashboardActivity"
             android:label="@string/app_name"
             android:exported="true" />
         <activity
-            android:name=".activities.UserProfileActivity"
+            android:name="com.example.imageassetdemo.ui.activities.UserProfileActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name="com.example.imageassetdemo.ui.activities.ForgotPasswordActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name="com.example.imageassetdemo.ui.activities.RegisterActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.example.imageassetdemo.ui.activities.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.example.imageassetdemo.ui.activities.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.example.imageassetdemo.ui.activities.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
     </application>

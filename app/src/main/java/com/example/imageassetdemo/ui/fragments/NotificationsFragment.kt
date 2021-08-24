@@ -1,4 +1,4 @@
-package com.example.imageassetdemo.activities.ui.notifications
+package com.example.imageassetdemo.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.imageassetdemo.R
-import com.example.imageassetdemo.activities.ui.dashboard.NotificationsViewModel
+import com.example.imageassetdemo.viewmodels.NotificationsViewModel
 
 class NotificationsFragment : Fragment() {
 

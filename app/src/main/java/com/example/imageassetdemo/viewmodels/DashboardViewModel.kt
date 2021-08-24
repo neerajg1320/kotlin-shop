@@ -1,4 +1,4 @@
-package com.example.imageassetdemo.activities.ui.dashboard
+package com.example.imageassetdemo.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

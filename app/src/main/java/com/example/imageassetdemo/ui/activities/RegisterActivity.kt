@@ -1,10 +1,8 @@
-package com.example.imageassetdemo.activities
+package com.example.imageassetdemo.ui.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityRegisterBinding
 import com.example.imageassetdemo.firestore.FirestoreClass

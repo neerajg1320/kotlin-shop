@@ -1,4 +1,4 @@
-package com.example.imageassetdemo.activities
+package com.example.imageassetdemo.ui.activities
 
 import android.content.Context
 import android.content.Intent
