@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityProductDetailsBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
@@ -41,7 +42,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
                 intent.getStringExtra(Constants.EXTRA_PRODUCT_OWNER_ID)!!
         }
 
-        Log.d("ProductDetailsActivity", "${FirestoreClass().getCurrentUserID()} , ${productOwnerId}")
+        Log.d("OwnerId", "${FirestoreClass().getCurrentUserID()} , ${productOwnerId}")
         if (FirestoreClass().getCurrentUserID() == productOwnerId) {
             binding.btnAddToCart.visibility = View.GONE
             binding.btnGoToCart.visibility = View.GONE
@@ -144,12 +145,27 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
         binding.tvProductDetailsTitle.text = product.title
         binding.tvProductDetailsPrice.text = "$${product.price}"
         binding.tvProductDetailsDescription.text = product.description
-        binding.tvProductDetailsQuantity.text = product.stock_quantity
+        binding.tvProductDetailsStockQuantity.text = product.stock_quantity
 
-        if (FirestoreClass().getCurrentUserID() == product.user_id) {
+        if(product.stock_quantity.toInt() == 0){
             hideProgressDialog()
-        } else {
-            FirestoreClass().checkIfItemExistInCart(this, mProductId)
+
+            binding.btnAddToCart.visibility = View.GONE
+            binding.tvProductDetailsStockQuantity.text =
+                resources.getString(R.string.lbl_out_of_stock)
+            binding.tvProductDetailsStockQuantity.setTextColor(
+                ContextCompat.getColor(
+                    this@ProductDetailsActivity,
+                    R.color.colorSnackBarError
+                )
+            )
+        }else{
+            // There is no need to check the cart list if the product owner himself is seeing the product details.
+            if (FirestoreClass().getCurrentUserID() == product.user_id) {
+                hideProgressDialog()
+            } else {
+                FirestoreClass().checkIfItemExistInCart(this@ProductDetailsActivity, mProductId)
+            }
         }
     }
 
@@ -157,7 +173,6 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
      * A function to notify the success result of item exists in the cart.
      */
     fun productExistsInCart() {
-
         // Hide the progress dialog.
         hideProgressDialog()
 

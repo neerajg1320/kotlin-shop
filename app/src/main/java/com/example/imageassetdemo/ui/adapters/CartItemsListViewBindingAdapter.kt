@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
@@ -13,9 +12,7 @@ import com.example.imageassetdemo.databinding.ItemCartLayoutBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.CartItem
 import com.example.imageassetdemo.ui.activities.CartListActivity
-import com.example.imageassetdemo.util.BoldTextView
 import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.CustomTextView
 import com.example.imageassetdemo.util.GlideLoader
 
 /**
@@ -118,7 +115,7 @@ open class CartItemsListViewBindingAdapter(
                 // Remove item from order by one unit
                 binding.ibRemoveCartItem.setOnClickListener {
                     if (this.cart_quantity == "1") {
-                        FirestoreClass().removeItemFromCart(context, this.id)
+                        FirestoreClass().deleteItemFromCart(context, this.id)
                     } else {
                         val cartQuantity: Int = this.cart_quantity.toInt()
                         val itemHashMap = HashMap<String, Any>()
@@ -140,7 +137,7 @@ open class CartItemsListViewBindingAdapter(
                         }
                     }
 
-                    FirestoreClass().removeItemFromCart(context, this.id)
+                    FirestoreClass().deleteItemFromCart(context, this.id)
                 }
             }
         }

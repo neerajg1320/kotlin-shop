@@ -1,8 +1,6 @@
 package com.example.imageassetdemo.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +9,6 @@ import com.example.imageassetdemo.databinding.ActivityCartListBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.CartItem
 import com.example.imageassetdemo.models.Product
-import com.example.imageassetdemo.ui.adapters.CartItemsListAdapter
 import com.example.imageassetdemo.ui.adapters.CartItemsListViewBindingAdapter
 
 class CartListActivity : BaseActivity() {
