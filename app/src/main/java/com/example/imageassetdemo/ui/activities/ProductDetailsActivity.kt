@@ -2,6 +2,7 @@ package com.example.imageassetdemo.ui.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityProductDetailsBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
@@ -29,7 +30,18 @@ class ProductDetailsActivity : BaseActivity() {
         if (intent.hasExtra(Constants.EXTRA_PRODUCT_ID)) {
             mProductId =
                 intent.getStringExtra(Constants.EXTRA_PRODUCT_ID)!!
-            Log.i("Product Id", mProductId)
+        }
+        var productOwnerId: String = ""
+        if (intent.hasExtra(Constants.EXTRA_PRODUCT_OWNER_ID)) {
+            productOwnerId =
+                intent.getStringExtra(Constants.EXTRA_PRODUCT_OWNER_ID)!!
+        }
+
+        Log.d("ProductDetailsActivity", "${FirestoreClass().getCurrentUserID()} , ${productOwnerId}")
+        if (FirestoreClass().getCurrentUserID() == productOwnerId) {
+            binding.btnAddToCart.visibility = View.GONE
+        } else {
+            binding.btnAddToCart.visibility = View.VISIBLE
         }
 
         setupActionBar(binding.toolbarProductDetailsActivity)
