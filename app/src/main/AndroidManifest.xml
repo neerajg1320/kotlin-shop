@@ -12,10 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageAssetDemo">
         <activity
+            android:name=".ui.activities.AddressListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.activities.CartListActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activities.ProductDetailsActivity"
             android:exported="true"
@@ -60,9 +65,7 @@
             android:name=".ui.activities.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ui.activities.SplashActivity"
             android:exported="true"
