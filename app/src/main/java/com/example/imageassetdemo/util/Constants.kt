@@ -9,6 +9,7 @@ import android.webkit.MimeTypeMap
 object Constants {
     const val USERS: String = "users"
     const val PRODUCTS: String = "products"
+    const val CART_ITEMS: String = "cart_items"
 
     const val APP_PREF: String = "ShopAppPref"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
@@ -24,16 +25,19 @@ object Constants {
     const val FEMALE: String = "female"
     const val FIRST_NAME: String = "firstName"
     const val LAST_NAME: String = "lastName"
-
     const val MOBILE: String = "mobile"
     const val GENDER: String = "gender"
     const val IMAGE: String = "image"
     const val COMPLETE_PROFILE: String = "profileCompleted"
 
     const val USER_ID: String = "user_id"
+    const val PRODUCT_ID: String = "product_id"
 
     const val USER_PROFILE_IMAGE:String = "User_Profile_Image"
     const val PRODUCT_IMAGE: String = "Product_Image"
+
+    const val DEFAULT_CART_QUANTITY: String = "1"
+    const val CART_QUANTITY: String = "cart_quantity"
 
     fun showImageChooser(activity: Activity) {
         // An intent for launching the image selection of phone storage.

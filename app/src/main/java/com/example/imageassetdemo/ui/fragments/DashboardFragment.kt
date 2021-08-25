@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Product
+import com.example.imageassetdemo.ui.activities.CartListActivity
 import com.example.imageassetdemo.ui.activities.ProductDetailsActivity
 import com.example.imageassetdemo.ui.activities.SettingsActivity
 import com.example.imageassetdemo.ui.adapters.DashboardItemsListAdapter
@@ -53,6 +54,11 @@ class DashboardFragment : BaseFragment() {
             R.id.action_settings -> {
 
                 startActivity(Intent(activity, SettingsActivity::class.java))
+                return true
+            }
+            R.id.action_cart -> {
+
+                startActivity(Intent(activity, CartListActivity::class.java))
                 return true
             }
         }
