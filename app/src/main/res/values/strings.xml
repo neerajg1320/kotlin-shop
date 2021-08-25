@@ -140,8 +140,5 @@
     <string name="err_msg_please_enter_zip_code">Please enter zip-code.</string>
     <string name="err_msg_please_enter_other_details">Please enter other details.</string>
 
-    <!--TODO Step 4: Add the string resources file to the strings.xml file.-->
-    <!--START-->
     <string name="err_your_address_added_successfully">Your address is added successfully.</string>
-    <!--END-->
 </resources>
