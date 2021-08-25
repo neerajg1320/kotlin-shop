@@ -10,7 +10,7 @@ import com.example.imageassetdemo.databinding.ActivityCartListBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.CartItem
 import com.example.imageassetdemo.models.Product
-import com.example.imageassetdemo.ui.adapters.CartItemsListViewBindingAdapter
+import com.example.imageassetdemo.ui.adapters.CartItemsListAdapter
 import com.example.imageassetdemo.util.Constants
 
 class CartListActivity : BaseActivity() {
@@ -104,7 +104,7 @@ class CartListActivity : BaseActivity() {
             rvCardItemsList.setHasFixedSize(true)
 
             // val cartListAdapter = CartItemsListAdapter(this@CartListActivity, mCartListItems)
-            val cartListAdapter = CartItemsListViewBindingAdapter(this@CartListActivity, mCartListItems)
+            val cartListAdapter = CartItemsListAdapter(this@CartListActivity, mCartListItems, true)
             rvCardItemsList.adapter = cartListAdapter
 
             var subTotal: Double = 0.0

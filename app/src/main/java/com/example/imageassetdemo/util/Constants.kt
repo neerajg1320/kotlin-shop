@@ -11,6 +11,7 @@ object Constants {
     const val PRODUCTS: String = "products"
     const val CART_ITEMS: String = "cart_items"
     const val ADDRESSES: String = "addresses"
+    const val ORDERS: String = "orders"
 
     const val APP_PREF: String = "ShopAppPref"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
@@ -19,6 +20,7 @@ object Constants {
     const val EXTRA_PRODUCT_OWNER_ID: String = "extra_product_owner_id"
     const val EXTRA_ADDRESS_DETAILS: String = "AddressDetails"
     const val EXTRA_SELECT_ADDRESS: String = "extra_select_address"
+    const val EXTRA_SELECTED_ADDRESS: String = "extra_selected_address"
 
     const val READ_STORAGE_PERMISSION_CODE = 2
 

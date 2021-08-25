@@ -18,9 +18,10 @@ import com.example.imageassetdemo.util.GlideLoader
 /**
  * A adapter class for dashboard items list.
  */
-open class CartItemsListViewBindingAdapter(
+open class CartItemsListAdapter(
     private val context: Context,
-    private var cartItemsList: ArrayList<CartItem>
+    private var cartItemsList: ArrayList<CartItem>,
+    private val updateCartItems: Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     /**
@@ -64,6 +65,12 @@ open class CartItemsListViewBindingAdapter(
                     binding.ibRemoveCartItem.visibility = View.GONE
                     binding.ibAddCartItem.visibility = View.GONE
 
+                    if (updateCartItems) {
+                        binding.ibDeleteCartItem.visibility = View.VISIBLE
+                    } else {
+                        binding.ibDeleteCartItem.visibility = View.GONE
+                    }
+
                     binding.tvCartQuantity.text =
                         context.resources.getString(R.string.lbl_out_of_stock)
 
@@ -74,8 +81,16 @@ open class CartItemsListViewBindingAdapter(
                         )
                     )
                 } else {
-                    binding.ibRemoveCartItem.visibility = View.VISIBLE
-                    binding.ibAddCartItem.visibility = View.VISIBLE
+                    if (updateCartItems) {
+                        binding.ibRemoveCartItem.visibility = View.VISIBLE
+                        binding.ibAddCartItem.visibility = View.VISIBLE
+                        binding.ibDeleteCartItem.visibility = View.VISIBLE
+                    } else {
+                        binding.ibRemoveCartItem.visibility = View.GONE
+                        binding.ibAddCartItem.visibility = View.GONE
+                        binding.ibDeleteCartItem.visibility = View.GONE
+
+                    }
 
                     binding.tvCartQuantity.setTextColor(
                         ContextCompat.getColor(

@@ -13,6 +13,7 @@ import com.example.imageassetdemo.databinding.ItemAddressLayoutBinding
 import com.example.imageassetdemo.databinding.ItemCartLayoutBinding
 import com.example.imageassetdemo.models.Address
 import com.example.imageassetdemo.ui.activities.AddEditAddressActivity
+import com.example.imageassetdemo.ui.activities.CheckoutActivity
 import com.example.imageassetdemo.util.Constants
 
 /**
@@ -65,11 +66,9 @@ open class AddressListAdapter(
 
             if(selectAddress) {
                 holder.itemView.setOnClickListener {
-                    Toast.makeText(
-                        context,
-                        "Selected address : ${model.address}, ${model.zipCode}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    val intent = Intent(context, CheckoutActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_SELECTED_ADDRESS, model)
+                    context.startActivity(intent)
                 }
             }
         }

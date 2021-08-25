@@ -45,7 +45,7 @@ class AddressListActivity : BaseActivity() {
             binding.tvTitle.text = resources.getString(R.string.title_select_address)
         }
     }
-    
+
     /**
      * A function to get the list of address from cloud firestore.
      */
