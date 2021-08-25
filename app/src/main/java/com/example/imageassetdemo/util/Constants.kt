@@ -18,6 +18,7 @@ object Constants {
     const val EXTRA_PRODUCT_ID: String = "extra_product_id"
     const val EXTRA_PRODUCT_OWNER_ID: String = "extra_product_owner_id"
     const val EXTRA_ADDRESS_DETAILS: String = "AddressDetails"
+    const val EXTRA_SELECT_ADDRESS: String = "extra_select_address"
 
     const val READ_STORAGE_PERMISSION_CODE = 2
 

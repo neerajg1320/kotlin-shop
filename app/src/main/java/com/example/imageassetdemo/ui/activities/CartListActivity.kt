@@ -1,5 +1,6 @@
 package com.example.imageassetdemo.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.CartItem
 import com.example.imageassetdemo.models.Product
 import com.example.imageassetdemo.ui.adapters.CartItemsListViewBindingAdapter
+import com.example.imageassetdemo.util.Constants
 
 class CartListActivity : BaseActivity() {
     private lateinit var binding: ActivityCartListBinding
@@ -23,6 +25,12 @@ class CartListActivity : BaseActivity() {
         setContentView(binding.root)
 
         setupActionBar(binding.toolbarCartListActivity)
+
+        binding.btnCheckout.setOnClickListener {
+            val intent = Intent(this, AddressListActivity::class.java)
+            intent.putExtra(Constants.EXTRA_SELECT_ADDRESS, true)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

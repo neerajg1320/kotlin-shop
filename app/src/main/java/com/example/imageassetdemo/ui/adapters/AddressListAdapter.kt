@@ -7,6 +7,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.databinding.ItemAddressLayoutBinding
 import com.example.imageassetdemo.databinding.ItemCartLayoutBinding
@@ -19,7 +20,8 @@ import com.example.imageassetdemo.util.Constants
  */
 open class AddressListAdapter(
     private val context: Context,
-    private var addressList: ArrayList<Address>
+    private var addressList: ArrayList<Address>,
+    private var selectAddress: Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     /**
@@ -60,6 +62,16 @@ open class AddressListAdapter(
             binding.tvAddressType.text = model.type
             binding.tvAddressDetails.text = "${model.address}, ${model.zipCode}"
             binding.tvAddressMobileNumber.text = model.mobileNumber
+
+            if(selectAddress) {
+                holder.itemView.setOnClickListener {
+                    Toast.makeText(
+                        context,
+                        "Selected address : ${model.address}, ${model.zipCode}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
     }
 
