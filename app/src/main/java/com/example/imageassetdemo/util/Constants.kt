@@ -23,6 +23,8 @@ object Constants {
 
     const val PICK_IMAGE_REQUEST_CODE = 2
 
+    const val ADD_ADDRESS_REQUEST_CODE: Int = 121
+
     const val MALE: String = "male"
     const val FEMALE: String = "female"
     const val FIRST_NAME: String = "firstName"

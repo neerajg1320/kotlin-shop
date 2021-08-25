@@ -14,12 +14,46 @@ import com.example.imageassetdemo.util.Constants
 class AddEditAddressActivity : BaseActivity() {
     private lateinit var binding: ActivityAddEditAddressBinding
 
+    private var mAddressDetails: Address? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddEditAddressBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (intent.hasExtra(Constants.EXTRA_ADDRESS_DETAILS)) {
+            mAddressDetails = intent.getParcelableExtra(Constants.EXTRA_ADDRESS_DETAILS)
+        }
+
         setupActionBar(binding.toolbarAddEditAddressActivity)
+
+        if (mAddressDetails != null) {
+            if (mAddressDetails!!.id.isNotEmpty()) {
+
+                binding.tvTitle.text = resources.getString(R.string.title_edit_address)
+                binding.btnSubmitAddress.text = resources.getString(R.string.btn_lbl_update)
+
+                binding.etFullName.setText(mAddressDetails?.name)
+                binding.etPhoneNumber.setText(mAddressDetails?.mobileNumber)
+                binding.etAddress.setText(mAddressDetails?.address)
+                binding.etZipCode.setText(mAddressDetails?.zipCode)
+                binding.etAdditionalNote.setText(mAddressDetails?.additionalNote)
+
+                when (mAddressDetails?.type) {
+                    Constants.HOME -> {
+                        binding.rbHome.isChecked = true
+                    }
+                    Constants.OFFICE -> {
+                        binding.rbOffice.isChecked = true
+                    }
+                    else -> {
+                        binding.rbOffice.isChecked = true
+                        binding.tilOtherDetails.visibility = View.VISIBLE
+                        binding.etOtherDetails.setText(mAddressDetails?.otherDetails)
+                    }
+                }
+            }
+        }
 
         binding.rgType.setOnCheckedChangeListener { _, checkedId ->
             if (checkedId == R.id.rb_other) {
@@ -115,7 +149,15 @@ class AddEditAddressActivity : BaseActivity() {
                 otherDetails
             )
 
-            FirestoreClass().addAddress(this@AddEditAddressActivity, addressModel)
+            if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
+                FirestoreClass().updateAddress(
+                    this@AddEditAddressActivity,
+                    addressModel,
+                    mAddressDetails!!.id
+                )
+            } else {
+                FirestoreClass().addAddress(this@AddEditAddressActivity, addressModel)
+            }
         }
     }
 
@@ -127,12 +169,20 @@ class AddEditAddressActivity : BaseActivity() {
         // Hide progress dialog
         hideProgressDialog()
 
+        val notifySuccessMessage: String = if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
+            resources.getString(R.string.msg_your_address_updated_successfully)
+        } else {
+            resources.getString(R.string.err_your_address_added_successfully)
+        }
+
         Toast.makeText(
             this@AddEditAddressActivity,
-            resources.getString(R.string.err_your_address_added_successfully),
+            notifySuccessMessage,
             Toast.LENGTH_SHORT
         ).show()
 
+        // TODO Step 13: Now se the result to OK.
+        setResult(RESULT_OK)
         finish()
     }
 }
