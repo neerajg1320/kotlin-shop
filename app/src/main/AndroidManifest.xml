@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageAssetDemo">
         <activity
+            android:name=".ui.activities.AddEditAddressActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.activities.AddressListActivity"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -65,7 +70,7 @@
             android:name=".ui.activities.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activities.SplashActivity"
             android:exported="true"

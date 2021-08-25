@@ -1,5 +1,6 @@
 package com.example.imageassetdemo.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.imageassetdemo.R
@@ -14,5 +15,10 @@ class AddressListActivity : BaseActivity() {
         setContentView(binding.root)
 
         setupActionBar(binding.toolbarAddressListActivity)
+
+        binding.tvAddAddress.setOnClickListener {
+            val intent = Intent(this@AddressListActivity, AddEditAddressActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
