@@ -2,27 +2,32 @@ package com.example.imageassetdemo.ui.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ItemListLayoutBinding
-import com.example.imageassetdemo.models.Order
+import com.example.imageassetdemo.firestore.FirestoreClass
+import com.example.imageassetdemo.models.SoldProduct
 import com.example.imageassetdemo.ui.activities.MyOrderDetailsActivity
+import com.example.imageassetdemo.ui.fragments.BaseFragment
 import com.example.imageassetdemo.util.Constants
 import com.example.imageassetdemo.util.GlideLoader
 
-
-open class MyOrdersListAdapter(
+/**
+ * A adapter class for sold products list items.
+ */
+open class SoldProductsListAdapter(
     private val context: Context,
-    private var orderList: ArrayList<Order>
+    private var list: ArrayList<SoldProduct>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     /**
      * A ViewHolder describes an item view and metadata about its place within the RecyclerView.
      */
-    class OrderViewHolder(val binding: ItemListLayoutBinding) : RecyclerView.ViewHolder(binding.root)
-
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     /**
      * Inflates the item views which is designed in xml layout file
@@ -31,9 +36,13 @@ open class MyOrdersListAdapter(
      * {@link ViewHolder} and initializes some private fields to be used by RecyclerView.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val binding = ItemListLayoutBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
-        return OrderViewHolder(binding)
+        return MyViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.item_list_layout,
+                parent,
+                false
+            )
+        )
     }
 
     /**
@@ -47,24 +56,25 @@ open class MyOrdersListAdapter(
      * layout file.
      */
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        with(holder as OrderViewHolder) {
-            with(orderList[position]) {
-                GlideLoader(context).loadProductPicture(
-                    this.image,
-                    binding.ivItemImage
-                )
+        val model = list[position]
 
-                binding.tvItemName.text = this.title
-                binding.tvItemPrice.text = "$${this.total_amount}"
+        if (holder is MyViewHolder) {
 
-                binding.ibDeleteProduct.visibility = View.GONE
-
-                holder.itemView.setOnClickListener {
-                    val intent = Intent(context, MyOrderDetailsActivity::class.java)
-                    intent.putExtra(Constants.EXTRA_MY_ORDER_DETAILS, this)
-                    context.startActivity(intent)
-                }
-            }
+//            GlideLoader(context).loadProductPicture(
+//                model.image,
+//                holder.itemView.iv_item_image
+//            )
+//
+//            holder.itemView.tv_item_name.text = model.title
+//            holder.itemView.tv_item_price.text = "$${model.price}"
+//
+//            holder.itemView.ib_delete_product.visibility = View.GONE
+//
+//            holder.itemView.setOnClickListener {
+//                val intent = Intent(context, SoldProductDetailsActivity::class.java)
+//                intent.putExtra(Constants.EXTRA_SOLD_PRODUCT_DETAILS, model)
+//                context.startActivity(intent)
+//            }
         }
     }
 
@@ -72,8 +82,8 @@ open class MyOrdersListAdapter(
      * Gets the number of items in the list
      */
     override fun getItemCount(): Int {
-        return orderList.size
+        return list.size
     }
 
+
 }
-// END

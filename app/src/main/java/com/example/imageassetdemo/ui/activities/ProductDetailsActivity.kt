@@ -20,7 +20,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
 
     private var mProductId: String = ""
     private lateinit var mProductDetails: Product
-
+    private lateinit var mProductOwnerId: String
 
     /**
      * This function is auto created by Android when the Activity Class is created.
@@ -36,14 +36,13 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
             mProductId =
                 intent.getStringExtra(Constants.EXTRA_PRODUCT_ID)!!
         }
-        var productOwnerId: String = ""
         if (intent.hasExtra(Constants.EXTRA_PRODUCT_OWNER_ID)) {
-            productOwnerId =
+            mProductOwnerId =
                 intent.getStringExtra(Constants.EXTRA_PRODUCT_OWNER_ID)!!
         }
 
-        Log.d("OwnerId", "${FirestoreClass().getCurrentUserID()} , ${productOwnerId}")
-        if (FirestoreClass().getCurrentUserID() == productOwnerId) {
+        Log.d("OwnerId", "${FirestoreClass().getCurrentUserID()} , ${mProductOwnerId}")
+        if (FirestoreClass().getCurrentUserID() == mProductOwnerId) {
             binding.btnAddToCart.visibility = View.GONE
             binding.btnGoToCart.visibility = View.GONE
         } else {
@@ -81,6 +80,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
 
         val addToCart = CartItem(
             FirestoreClass().getCurrentUserID(),
+            mProductOwnerId,
             mProductId,
             mProductDetails.title,
             mProductDetails.price,
