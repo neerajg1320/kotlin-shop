@@ -13,6 +13,7 @@ import com.example.imageassetdemo.models.SoldProduct
 import com.example.imageassetdemo.ui.activities.SoldProductDetailsActivity
 import com.example.imageassetdemo.ui.custom.CustomTextViewBold
 import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.databinding.ItemListLayoutBinding
 import com.example.imageassetdemo.ui.custom.GlideLoader
 
 
@@ -27,7 +28,8 @@ open class SoldProductsListAdapter(
     /**
      * A ViewHolder describes an item view and metadata about its place within the RecyclerView.
      */
-    class SoldProductViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    // class SoldProductViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class SoldProductViewHolder(val binding: ItemListLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     /**
      * Inflates the item views which is designed in xml layout file
@@ -36,13 +38,9 @@ open class SoldProductsListAdapter(
      * {@link ViewHolder} and initializes some private fields to be used by RecyclerView.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return SoldProductViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.item_list_layout,
-                parent,
-                false
-            )
-        )
+        val binding = ItemListLayoutBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+        return SoldProductViewHolder(binding)
     }
 
     /**
@@ -56,24 +54,23 @@ open class SoldProductsListAdapter(
      * layout file.
      */
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val model = list[position]
+        with(holder as SoldProductViewHolder) {
+            with(list[position]) {
+                GlideLoader(context).loadProductPicture(
+                    this.image,
+                    binding.ivItemImage
+                )
 
-        if (holder is SoldProductViewHolder) {
+                binding.tvItemName.text = this.title
+                binding.tvItemPrice.text = "$${this.price}"
 
-            GlideLoader(context).loadProductPicture(
-                model.image,
-                holder.itemView.findViewById(R.id.iv_item_image)
-            )
+                binding.ibDeleteProduct.visibility = View.GONE
 
-            holder.itemView.findViewById<CustomTextViewBold>(R.id.tv_item_name).text = model.title
-            holder.itemView.findViewById<CustomTextViewBold>(R.id.tv_item_price).text = "$${model.price}"
-
-            holder.itemView.findViewById<ImageButton>(R.id.ib_delete_product).visibility = View.GONE
-
-            holder.itemView.setOnClickListener {
-                val intent = Intent(context, SoldProductDetailsActivity::class.java)
-                intent.putExtra(Constants.EXTRA_SOLD_PRODUCT_DETAILS, model)
-                context.startActivity(intent)
+                holder.itemView.setOnClickListener {
+                    val intent = Intent(context, SoldProductDetailsActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_SOLD_PRODUCT_DETAILS, this)
+                    context.startActivity(intent)
+                }
             }
         }
     }
