@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ItemListLayoutBinding
 import com.example.imageassetdemo.models.Order
+import com.example.imageassetdemo.ui.activities.MyOrderDetailsActivity
 import com.example.imageassetdemo.util.Constants
 import com.example.imageassetdemo.util.GlideLoader
 
@@ -55,19 +56,16 @@ open class MyOrdersListAdapter(
                     binding.ivItemImage
                 )
 
-                binding.tvItemName.text = model.title
-                binding.tvItemPrice.text = "$${model.total_amount}"
+                binding.tvItemName.text = this.title
+                binding.tvItemPrice.text = "$${this.total_amount}"
 
                 binding.ibDeleteProduct.visibility = View.GONE
 
-                // TODO Step 7: Assign the click event to my order item and launch and pass the details to the detail page through intent.
-                // START
                 holder.itemView.setOnClickListener {
-//                    val intent = Intent(context, MyOrderDetailsActivity::class.java)
-//                    intent.putExtra(Constants.EXTRA_MY_ORDER_DETAILS, model)
-//                    context.startActivity(intent)
+                    val intent = Intent(context, MyOrderDetailsActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_MY_ORDER_DETAILS, this)
+                    context.startActivity(intent)
                 }
-                // END
             }
         }
     }

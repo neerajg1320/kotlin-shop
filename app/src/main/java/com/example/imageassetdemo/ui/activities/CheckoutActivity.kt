@@ -102,8 +102,6 @@ class CheckoutActivity : BaseActivity() {
         val cartListAdapter = CartItemsListAdapter(this@CheckoutActivity, mCartItemsList, false)
         rvCartListItems.adapter = cartListAdapter
 
-        // TODO Step 4: Replace the subTotal and totalAmount variables with the global variables.
-        // START
         for (item in mCartItemsList) {
 
             val availableQuantity = item.stock_quantity.toInt()
@@ -128,7 +126,6 @@ class CheckoutActivity : BaseActivity() {
         } else {
             binding.llCheckoutPlaceOrder.visibility = View.GONE
         }
-        // END
     }
 
     /**
@@ -148,12 +145,11 @@ class CheckoutActivity : BaseActivity() {
             mSubTotal.toString(),
             "10.0", // The Shipping Charge is fixed as $10 for now in our case.
             mTotalAmount.toString(),
+            System.currentTimeMillis()
+
         )
         FirestoreClass().placeOrder(this@CheckoutActivity, order)
     }
-    // END
-
-
 
     /**
      * A function to notify the success result of the order placed.
