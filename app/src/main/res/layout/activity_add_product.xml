@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     tools:context=".ui.activities.AddProductActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -73,7 +72,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_product_title"
-                style="@style/CustomTextInputLayoutStyle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -85,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fl_product_image">
 
-                <com.example.imageassetdemo.util.BoldTextView
+                <com.example.imageassetdemo.util.CustomEditText
                     android:id="@+id/et_product_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +96,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_product_price"
-                style="@style/CustomDarkInputLayoutStyle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -109,7 +108,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_title">
 
-                <com.example.imageassetdemo.util.BoldTextView
+                <com.example.imageassetdemo.util.CustomEditText
                     android:id="@+id/et_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,7 +121,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_product_description"
-                style="@style/CustomDarkInputLayoutStyle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -134,7 +133,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_price">
 
-                <com.example.imageassetdemo.util.BoldTextView
+                <com.example.imageassetdemo.util.CustomEditText
                     android:id="@+id/et_product_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,7 +146,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_product_quantity"
-                style="@style/CustomTextInputLayoutStyle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -159,7 +158,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_description">
 
-                <com.example.imageassetdemo.util.BoldTextView
+                <com.example.imageassetdemo.util.CustomEditText
                     android:id="@+id/et_product_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
