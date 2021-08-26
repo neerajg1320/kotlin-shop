@@ -1,10 +1,9 @@
 package com.example.imageassetdemo.ui.fragments
 
 import android.app.Dialog
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.imageassetdemo.R
-import com.example.imageassetdemo.util.BoldTextView
+import com.example.imageassetdemo.util.CustomTextViewBold
 
 open class BaseFragment : Fragment() {
 
@@ -24,7 +23,7 @@ open class BaseFragment : Fragment() {
         The resource will be inflated, adding all top-level views to the screen.*/
         mProgressDialog.setContentView(R.layout.dialog_progress)
 
-        mProgressDialog.findViewById<BoldTextView>(R.id.tv_progress_text).text = text
+        mProgressDialog.findViewById<CustomTextViewBold>(R.id.tv_progress_text).text = text
 
         mProgressDialog.setCancelable(false)
         mProgressDialog.setCanceledOnTouchOutside(false)

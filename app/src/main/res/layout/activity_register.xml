@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.example.imageassetdemo.util.BoldTextView
+        <com.example.imageassetdemo.util.CustomTextViewBold
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -225,7 +225,7 @@
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/lbl_text_view_textSize" />
 
-                <com.example.imageassetdemo.util.BoldTextView
+                <com.example.imageassetdemo.util.CustomTextViewBold
                     android:id="@+id/tv_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

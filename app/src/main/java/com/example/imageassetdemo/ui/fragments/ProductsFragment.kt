@@ -16,15 +16,7 @@ import com.example.imageassetdemo.models.Product
 import com.example.imageassetdemo.ui.activities.AddProductActivity
 import com.example.imageassetdemo.ui.adapters.ProductsListAdapter
 
-import com.example.imageassetdemo.viewmodels.ProductsViewModel
-
-
 class ProductsFragment : BaseFragment() {
-//    private var _binding: FragmentProductsBinding? = null
-//    private val binding get() = _binding!!
-
-    private lateinit var productsViewModel: ProductsViewModel
-
     private lateinit var mRootView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {

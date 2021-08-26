@@ -162,7 +162,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.example.imageassetdemo.util.BoldTextView
+                    <com.example.imageassetdemo.util.CustomTextViewBold
                         android:id="@+id/tv_product_item_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -231,7 +231,7 @@
                     android:textStyle="bold"
                     tools:text="Home" />
 
-                <com.example.imageassetdemo.util.BoldTextView
+                <com.example.imageassetdemo.util.CustomTextViewBold
                     android:id="@+id/tv_sold_details_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -347,7 +347,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.example.imageassetdemo.util.BoldTextView
+                    <com.example.imageassetdemo.util.CustomTextViewBold
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -355,7 +355,7 @@
                         android:textColor="@color/colorDarkGrey"
                         android:textSize="@dimen/sold_details_label_value_textSize" />
 
-                    <com.example.imageassetdemo.util.BoldTextView
+                    <com.example.imageassetdemo.util.CustomTextViewBold
                         android:id="@+id/tv_sold_product_total_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

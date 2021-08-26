@@ -8,9 +8,6 @@ import com.example.imageassetdemo.R
 import java.io.IOException
 
 class GlideLoader(val context: Context) {
-    /**
-     * A function to load image from URI for the user profile picture.
-     */
     fun loadUserPicture(image: Any, imageView: ImageView) {
         try {
             // Load the user image in the ImageView.
@@ -26,9 +23,6 @@ class GlideLoader(val context: Context) {
         }
     }
 
-    /**
-     * A function to load image from Uri or URL for the product image.
-     */
     fun loadProductPicture(image: Any, imageView: ImageView) {
         try {
             // Load the user image in the ImageView.

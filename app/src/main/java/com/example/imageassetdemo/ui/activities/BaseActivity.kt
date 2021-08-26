@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.example.imageassetdemo.R
-import com.example.imageassetdemo.util.BoldTextView
+import com.example.imageassetdemo.util.CustomTextViewBold
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -50,7 +50,7 @@ open class BaseActivity : AppCompatActivity() {
     fun showProgressDialog(text: String) {
         mProgressDialog = ProgressDialog(this)
         mProgressDialog.setContentView(R.layout.dialog_progress)
-        mProgressDialog.findViewById<BoldTextView>(R.id.tv_progress_text).text = text
+        mProgressDialog.findViewById<CustomTextViewBold>(R.id.tv_progress_text).text = text
         mProgressDialog.setCancelable(false)
         mProgressDialog.setCanceledOnTouchOutside(false)
         mProgressDialog.show()

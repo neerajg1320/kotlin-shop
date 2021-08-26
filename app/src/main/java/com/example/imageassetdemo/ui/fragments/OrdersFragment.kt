@@ -4,10 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
@@ -15,12 +11,8 @@ import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Order
 import com.example.imageassetdemo.ui.adapters.MyOrdersListAdapter
 import com.example.imageassetdemo.util.CustomTextView
-import com.example.imageassetdemo.viewmodels.OrdersViewModel
 
 class OrdersFragment : BaseFragment() {
-
-    private lateinit var ordersViewModel: OrdersViewModel
-
     private lateinit var mRootView: View
 
     override fun onCreateView(
@@ -28,10 +20,7 @@ class OrdersFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        ordersViewModel =
-            ViewModelProviders.of(this).get(OrdersViewModel::class.java)
         mRootView = inflater.inflate(R.layout.fragment_orders, container, false)
-
         return mRootView
     }
 

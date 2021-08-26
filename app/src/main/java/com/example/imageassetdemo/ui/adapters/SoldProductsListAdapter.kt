@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 
 import com.example.imageassetdemo.models.SoldProduct
 import com.example.imageassetdemo.ui.activities.SoldProductDetailsActivity
-import com.example.imageassetdemo.util.BoldTextView
+import com.example.imageassetdemo.util.CustomTextViewBold
 import com.example.imageassetdemo.util.Constants
 import com.example.imageassetdemo.util.GlideLoader
 
@@ -66,8 +65,8 @@ open class SoldProductsListAdapter(
                 holder.itemView.findViewById(R.id.iv_item_image)
             )
 
-            holder.itemView.findViewById<BoldTextView>(R.id.tv_item_name).text = model.title
-            holder.itemView.findViewById<BoldTextView>(R.id.tv_item_price).text = "$${model.price}"
+            holder.itemView.findViewById<CustomTextViewBold>(R.id.tv_item_name).text = model.title
+            holder.itemView.findViewById<CustomTextViewBold>(R.id.tv_item_price).text = "$${model.price}"
 
             holder.itemView.findViewById<ImageButton>(R.id.ib_delete_product).visibility = View.GONE
 

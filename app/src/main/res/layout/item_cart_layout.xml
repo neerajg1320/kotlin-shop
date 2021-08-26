@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.example.imageassetdemo.util.BoldTextView
+            <com.example.imageassetdemo.util.CustomTextViewBold
                 android:id="@+id/tv_cart_item_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
