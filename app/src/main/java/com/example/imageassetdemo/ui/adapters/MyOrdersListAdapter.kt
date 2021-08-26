@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ItemListLayoutBinding
 import com.example.imageassetdemo.models.Order
 import com.example.imageassetdemo.ui.activities.MyOrderDetailsActivity
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.GlideLoader
 
 
 open class MyOrdersListAdapter(

@@ -11,7 +11,7 @@ import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.CartItem
 import com.example.imageassetdemo.models.Product
 import com.example.imageassetdemo.ui.adapters.CartItemsListAdapter
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 
 class CartListActivity : BaseActivity() {
     private lateinit var binding: ActivityCartListBinding

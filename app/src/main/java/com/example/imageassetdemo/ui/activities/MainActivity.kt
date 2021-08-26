@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.imageassetdemo.databinding.ActivityMainBinding
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {

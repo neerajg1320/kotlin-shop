@@ -13,7 +13,7 @@ import com.example.imageassetdemo.models.CartItem
 import com.example.imageassetdemo.models.Order
 import com.example.imageassetdemo.models.Product
 import com.example.imageassetdemo.ui.adapters.CartItemsListAdapter
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 
 class CheckoutActivity : BaseActivity() {
     private lateinit var binding: ActivityCheckoutBinding

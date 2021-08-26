@@ -13,8 +13,8 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.models.Product
 import com.example.imageassetdemo.ui.activities.ProductDetailsActivity
 import com.example.imageassetdemo.ui.fragments.ProductsFragment
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.GlideLoader
 
 
 /**

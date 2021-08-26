@@ -9,7 +9,7 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityLoginBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.User
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 import com.google.firebase.auth.FirebaseAuth
 
 

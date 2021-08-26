@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import com.example.imageassetdemo.databinding.ActivitySoldProductDetailsBinding
 import com.example.imageassetdemo.models.SoldProduct
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.GlideLoader
 import java.text.SimpleDateFormat
 import java.util.*
 

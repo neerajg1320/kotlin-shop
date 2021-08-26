@@ -1,4 +1,4 @@
-package com.example.imageassetdemo.util
+package com.example.imageassetdemo
 
 import android.app.Activity
 import android.content.Intent

@@ -7,8 +7,8 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivitySettingsBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.User
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.GlideLoader
 import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : BaseActivity(), View.OnClickListener {

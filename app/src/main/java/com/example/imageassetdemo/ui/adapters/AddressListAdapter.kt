@@ -5,16 +5,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.databinding.ItemAddressLayoutBinding
-import com.example.imageassetdemo.databinding.ItemCartLayoutBinding
 import com.example.imageassetdemo.models.Address
 import com.example.imageassetdemo.ui.activities.AddEditAddressActivity
 import com.example.imageassetdemo.ui.activities.CheckoutActivity
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 
 /**
  * An adapter class for AddressList adapter.

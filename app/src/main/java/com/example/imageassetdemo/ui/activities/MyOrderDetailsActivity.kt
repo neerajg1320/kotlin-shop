@@ -10,7 +10,7 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityMyOrderDetailsBinding
 import com.example.imageassetdemo.models.Order
 import com.example.imageassetdemo.ui.adapters.CartItemsListAdapter
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit

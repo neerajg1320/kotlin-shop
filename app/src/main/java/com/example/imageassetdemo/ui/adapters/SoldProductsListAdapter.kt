@@ -11,9 +11,9 @@ import com.example.imageassetdemo.R
 
 import com.example.imageassetdemo.models.SoldProduct
 import com.example.imageassetdemo.ui.activities.SoldProductDetailsActivity
-import com.example.imageassetdemo.util.CustomTextViewBold
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.ui.custom.CustomTextViewBold
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.GlideLoader
 
 
 /**

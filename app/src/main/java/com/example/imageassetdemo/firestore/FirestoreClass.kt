@@ -12,7 +12,7 @@ import com.example.imageassetdemo.ui.fragments.DashboardFragment
 import com.example.imageassetdemo.ui.fragments.OrdersFragment
 import com.example.imageassetdemo.ui.fragments.ProductsFragment
 import com.example.imageassetdemo.ui.fragments.SoldProductsFragment
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions

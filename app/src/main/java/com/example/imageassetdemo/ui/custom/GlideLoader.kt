@@ -1,4 +1,4 @@
-package com.example.imageassetdemo.util
+package com.example.imageassetdemo.ui.custom
 
 import android.content.Context
 import android.net.Uri

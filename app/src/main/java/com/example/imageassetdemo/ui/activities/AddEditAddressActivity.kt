@@ -1,6 +1,5 @@
 package com.example.imageassetdemo.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -9,7 +8,7 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityAddEditAddressBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Address
-import com.example.imageassetdemo.util.Constants
+import com.example.imageassetdemo.Constants
 
 class AddEditAddressActivity : BaseActivity() {
     private lateinit var binding: ActivityAddEditAddressBinding

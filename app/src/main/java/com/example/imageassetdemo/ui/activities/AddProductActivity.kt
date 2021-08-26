@@ -17,8 +17,8 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.databinding.ActivityAddProductBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Product
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.GlideLoader
 import java.io.IOException
 
 class AddProductActivity : BaseActivity(), View.OnClickListener {

@@ -12,8 +12,8 @@ import com.example.imageassetdemo.databinding.ItemCartLayoutBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.CartItem
 import com.example.imageassetdemo.ui.activities.CartListActivity
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.GlideLoader
 
 /**
  * A adapter class for dashboard items list.

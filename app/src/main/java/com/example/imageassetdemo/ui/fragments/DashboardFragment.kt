@@ -4,9 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
@@ -16,9 +13,7 @@ import com.example.imageassetdemo.ui.activities.CartListActivity
 import com.example.imageassetdemo.ui.activities.ProductDetailsActivity
 import com.example.imageassetdemo.ui.activities.SettingsActivity
 import com.example.imageassetdemo.ui.adapters.DashboardItemsListAdapter
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.viewmodels.DashboardViewModel
-
+import com.example.imageassetdemo.Constants
 
 class DashboardFragment : BaseFragment() {
 

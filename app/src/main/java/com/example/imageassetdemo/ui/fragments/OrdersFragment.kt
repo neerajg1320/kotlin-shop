@@ -10,7 +10,7 @@ import com.example.imageassetdemo.R
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Order
 import com.example.imageassetdemo.ui.adapters.MyOrdersListAdapter
-import com.example.imageassetdemo.util.CustomTextView
+import com.example.imageassetdemo.ui.custom.CustomTextView
 
 class OrdersFragment : BaseFragment() {
     private lateinit var mRootView: View

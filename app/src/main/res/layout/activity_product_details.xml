@@ -66,7 +66,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_product_detail_image">
 
-                <com.example.imageassetdemo.util.CustomTextViewBold
+                <com.example.imageassetdemo.ui.custom.CustomTextViewBold
                     android:id="@+id/tv_product_details_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                     tools:text="$100" />
             </LinearLayout>
 
-            <com.example.imageassetdemo.util.CustomTextViewBold
+            <com.example.imageassetdemo.ui.custom.CustomTextViewBold
                 android:id="@+id/tv_product_details_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_product_details_description">
 
-                <com.example.imageassetdemo.util.CustomTextViewBold
+                <com.example.imageassetdemo.ui.custom.CustomTextViewBold
                     android:id="@+id/tv_product_details_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
                     tools:text="5" />
             </LinearLayout>
 
-            <com.example.imageassetdemo.util.CustomButton
+            <com.example.imageassetdemo.ui.custom.CustomButton
                 android:id="@+id/btn_add_to_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                 app:layout_constraintTop_toBottomOf="@id/ll_product_details_quantity"
                 tools:visibility="visible" />
 
-            <com.example.imageassetdemo.util.CustomButton
+            <com.example.imageassetdemo.ui.custom.CustomButton
                 android:id="@+id/btn_go_to_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

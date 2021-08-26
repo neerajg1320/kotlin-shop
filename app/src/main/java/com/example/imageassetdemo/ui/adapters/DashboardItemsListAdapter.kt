@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imageassetdemo.R
 import com.example.imageassetdemo.models.Product
-import com.example.imageassetdemo.util.GlideLoader
+import com.example.imageassetdemo.ui.custom.GlideLoader
 
 
 /**

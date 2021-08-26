@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.example.imageassetdemo.R
-import com.example.imageassetdemo.util.CustomTextViewBold
+import com.example.imageassetdemo.ui.custom.CustomTextViewBold
 import com.google.android.material.snackbar.Snackbar
 
 

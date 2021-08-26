@@ -3,7 +3,7 @@ package com.example.imageassetdemo.ui.fragments
 import android.app.Dialog
 import androidx.fragment.app.Fragment
 import com.example.imageassetdemo.R
-import com.example.imageassetdemo.util.CustomTextViewBold
+import com.example.imageassetdemo.ui.custom.CustomTextViewBold
 
 open class BaseFragment : Fragment() {
 

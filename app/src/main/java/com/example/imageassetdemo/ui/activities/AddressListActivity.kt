@@ -14,9 +14,9 @@ import com.example.imageassetdemo.databinding.ActivityAddressListBinding
 import com.example.imageassetdemo.firestore.FirestoreClass
 import com.example.imageassetdemo.models.Address
 import com.example.imageassetdemo.ui.adapters.AddressListAdapter
-import com.example.imageassetdemo.util.Constants
-import com.example.imageassetdemo.util.SwipeToDeleteCallback
-import com.example.imageassetdemo.util.SwipeToEditCallback
+import com.example.imageassetdemo.Constants
+import com.example.imageassetdemo.ui.custom.SwipeToDeleteCallback
+import com.example.imageassetdemo.ui.custom.SwipeToEditCallback
 
 class AddressListActivity : BaseActivity() {
     private lateinit var binding: ActivityAddressListBinding

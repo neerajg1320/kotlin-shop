@@ -33,7 +33,7 @@
             app:tint="@color/colorWhite" />
     </FrameLayout>
 
-    <com.example.imageassetdemo.util.CustomTextViewBold
+    <com.example.imageassetdemo.ui.custom.CustomTextViewBold
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title">
 
-        <com.example.imageassetdemo.util.CustomEditText
+        <com.example.imageassetdemo.ui.custom.CustomEditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_email">
 
-        <com.example.imageassetdemo.util.CustomEditText
+        <com.example.imageassetdemo.ui.custom.CustomEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             tools:text="123456" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.example.imageassetdemo.util.CustomTextViewBold
+    <com.example.imageassetdemo.ui.custom.CustomTextViewBold
         android:id="@+id/tv_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
-    <com.example.imageassetdemo.util.CustomButton
+    <com.example.imageassetdemo.ui.custom.CustomButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_login">
 
-        <com.example.imageassetdemo.util.CustomTextViewBold
+        <com.example.imageassetdemo.ui.custom.CustomTextViewBold
             android:id="@+id/tv_don_t_have_an_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/lbl_text_view_textSize" />
 
-        <com.example.imageassetdemo.util.CustomTextViewBold
+        <com.example.imageassetdemo.ui.custom.CustomTextViewBold
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
